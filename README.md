@@ -19,6 +19,5 @@ Zusätzlich ist die city als Key mit der id (PLZ) als Value hinterlegt.
 <br>
 ggf. muss der Pfad zur plz.data angepasst werden
 <br>
-<br>
 Update: die Datenstruktur ist jetzt ein HMSET <br>
 
