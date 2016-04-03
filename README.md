@@ -2,9 +2,10 @@
 WPP Aufgabe 2
 
 Es wird benötigt:
-- redis
+- redis 
 - ruby
-- gem json
-- gem redis-rb
+- gem json (gem install json)
+- gem redis-rb (gem install redis)
+- rubygems (sudo apt-get install rubygems-integration)
 
 ## Installation
