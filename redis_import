@@ -16,6 +16,7 @@ f.each_line do |line|
   id = jsonData['_id']
 
   redis.hset(id, 'city', jsonData['city'])
+  redis.hset(id, 'loc', jsonData['loc'].to_s)
   redis.hset(id, 'pop', jsonData['pop'])
   redis.hset(id, 'state', jsonData['state'])
 
