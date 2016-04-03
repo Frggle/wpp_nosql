@@ -1,5 +1,5 @@
-# wpp_nosql
-WPP im SS 2016 NoSQL und BigData
+# WPP NoSQL und BigData
+WPP Aufgabe 2
 Es wird benötigt:
 - redis
 - ruby
