@@ -1,5 +1,4 @@
 # WPP NoSQL und BigData
-WPP Aufgabe 2
 
 Es wird benötigt:
 - redis 
@@ -8,4 +7,6 @@ Es wird benötigt:
 - gem redis-rb (gem install redis)
 - rubygems (sudo apt-get install rubygems-integration)
 
-## Installation
+## Aufgabe 4
+Die Datenstruktur ist ein HSET (Hash). Die PLZ ist der Hash mit den verschiedenen Feldern wie pop oder state.
+Zusätzlich ist die city als Key mit der id (PLZ) als Value hinterlegt.
