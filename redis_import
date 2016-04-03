@@ -1,0 +1,26 @@
+#!/usr/bin/ruby
+
+require 'redis'
+require 'rubygems'
+require 'json'
+
+redis = Redis.new
+redis.flushdb
+
+f = File.open('/media/sf_shared/Studium - HAW/5. Semester/WP NoSQL & BigData - Zukunft/Praktikum/2/plz.data', 'r')
+
+puts 'run import'
+
+f.each_line do |line|
+  jsonData = JSON.parse(line)
+  id = jsonData['_id']
+
+  redis.hset(id, 'city', jsonData['city'])
+  redis.hset(id, 'pop', jsonData['pop'])
+  redis.hset(id, 'state', jsonData['state'])
+
+  redis.set(jsonData['city'], id)
+end
+f.close
+
+puts 'import completed'
