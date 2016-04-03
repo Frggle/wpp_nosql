@@ -10,3 +10,4 @@ Es wird benötigt:
 ## Aufgabe 4
 Die Datenstruktur ist ein HSET (Hash). Die PLZ ist der Hash mit den verschiedenen Feldern wie pop oder state.
 Zusätzlich ist die city als Key mit der id (PLZ) als Value hinterlegt.
+Update: die Datenstruktur ist jetzt ein HMSET
