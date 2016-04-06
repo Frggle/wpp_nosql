@@ -1,0 +1,52 @@
+#
+# Delete Database
+MATCH (n)
+OPTIONAL MATCH (n)-[r]-()
+DELETE n,r
+
+#
+# Create Nodes
+CREATE (MG:Modul {title:'Mathematische Grundlagen'}),
+(GI:Modul {title:'Grundlagen der Informatik'}),
+(PR1:Modul {title:'Programmieren 1'}),
+(BW1:Modul {title:'Betriebswirtschaft 1'}),
+(LB:Modul {title:'Logik und Berechenbarkeit'}),
+(AF:Modul {title:'Automaten und formale Sprache'}),
+(DB:Modul {title:'Datenbank'}),
+(PR2:Modul {title:'Programmieren 2'}),
+(RMP:Modul {title:'Rechner und maschinennahe Programmierung'}),
+(GKA:Modul {title:'Graphentheorie'}),
+(AD:Modul {title:'Algorithmen und Datenstrukturen'}),
+(SE1:Modul {title:'Software Engineering 1'}),
+(BS:Modul {title:'Betriebssysteme'}),
+(BW2:Modul {title:'Betriebswirtschaft 2'}),
+(CI:Modul {title:'Compiler und Interpreter'}),
+(SE2:Modul {title:'Software Engineering 2'}),
+(RN:Modul {title:'Rechnernetze'}),
+(EAM:Modul {title:'Enterprise Architecture Management'}),
+(GW1:Modul {title:'foo'}),
+(GW2:Modul {title:'bla'}),
+(PRO:Modul {title:'Projekt lernende Agenten'}),
+(AIS:Modul {title:'Seminar'}),
+(AI:Modul {title:'Architektur von Informationssystemen'}),
+(VS:Modul {title:'Verteilte Systeme'}),
+(NoSQL:Modul {title:'NoSQL und BigData'}),
+
+((NoSQL) -[:benoetigt]-> (GKA)),
+((GKA) -[:benoetigt]-> (GI)),
+((PR2) -[:benoetigt]-> (PR1)),
+((SE2) -[:benoetigt]-> (SE1)),
+((AI) -[:benoetigt]-> (SE2)),
+((NoSQL) -[:benoetigt]-> (DB)),
+((VS) -[:benoetigt]-> (BS)),
+((BW2) -[:benoetigt]-> (BW1)),
+((PR1) -[:benoetigt]-> (LB)),
+((PR2) -[:benoetigt]-> (LB))
+
+#
+# Abfrage: Welche Module sind für das NoSQL/Big Data-Modul nützlich?
+MATCH ((NoSQL) -[:benoetigt]-> (X)) RETURN X.title
+
+#
+# Abfrage: Welche Module wurden bisher im Studium nicht wieder genutzt?
+MATCH (X) WHERE NOT (X) <-[:benoetigt]- () return X.title
