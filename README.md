@@ -21,3 +21,19 @@ ggf. muss der Pfad zur plz.data angepasst werden
 <br>
 Update: die Datenstruktur ist jetzt ein HMSET <br>
 
+## Praktikum 3
+
+#### Aufgabe 7
+redis
+- LoC - interaktive Konsole: 45
+- LoC - import Script: 16
+- Aufwand: mittel
+- import time:
+
+mongo
+- LoC - interaktive Konsole: 51
+- LoC - import Script: 14
+- Aufwand: leicht 
+- import time:
+
+
