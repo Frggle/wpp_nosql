@@ -1,29 +1,25 @@
 #!/usr/bin/ruby
 
-require 'redis'
-require 'rubygems'
-require 'json'
+require "redis"
+require "rubygems"
+require "json"
 
 redis = Redis.new
 redis.flushdb
 
-f = File.open('/media/sf_shared/Studium - HAW/5. Semester/WP NoSQL & BigData - Zukunft/Praktikum/2/plz.data', 'r')
+f = File.open("/media/sf_shared/Studium - HAW/5. Semester/WP NoSQL & BigData - Zukunft/Praktikum/2/plz.data", "r")
 
-puts 'run import'
+puts "run import"
+hash = {}
 
 f.each_line do |line|
-  jsonData = JSON.parse(line)
-  id = jsonData['_id']
+	jsonData = JSON.parse(line)
+	id = jsonData["_id"]
+	redis.hmset(id, "city", jsonData["city"], "loc", jsonData["loc"].to_s, "pop", jsonData["pop"], "state", jsonData["state"])
 
-  #redis.hset(id, 'city', jsonData['city'])
-  #redis.hset(id, 'loc', jsonData['loc'].to_s)
-  #redis.hset(id, 'pop', jsonData['pop'])
-  #redis.hset(id, 'state', jsonData['state'])
-
-  redis.hmset(id, 'city', jsonData['city'], 'loc', jsonData['loc'].to_s, 'pop', jsonData['pop'], 'state' jsonData['state'])
-
-  redis.set(jsonData['city'], id)
+  redis.sadd(jsonData["city"], id)
+	#redis.set(jsonData["city"], id)
 end
 f.close
 
-puts 'import completed'
+puts "import completed"

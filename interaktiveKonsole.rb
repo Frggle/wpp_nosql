@@ -27,9 +27,10 @@ end
 
 def getPLZ
   input = gets.chomp
-  plz = $redis.get(input.upcase)
+  #plz = $redis.get(input.upcase)
+  plz = $redis.smembers(input.upcase)
   if !plz.nil?
-    puts 'PLZ: ' + plz
+    puts 'PLZ: ' + plz.join(",")
   else
     puts 'invalid input'
   end
