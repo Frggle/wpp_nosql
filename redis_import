@@ -18,7 +18,6 @@ f.each_line do |line|
 	redis.hmset(id, "city", jsonData["city"], "loc", jsonData["loc"].to_s, "pop", jsonData["pop"], "state", jsonData["state"])
 
   redis.sadd(jsonData["city"], id)
-	#redis.set(jsonData["city"], id)
 end
 f.close
 

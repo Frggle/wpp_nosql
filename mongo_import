@@ -1,0 +1,20 @@
+require 'rubygems'  # not necessary for Ruby 1.9
+require 'mongo'
+require 'json'
+
+include Mongo
+
+client = Mongo::Client.new([ '127.0.0.1:27017' ], :database => 'local')
+
+f = File.open("/media/sf_shared/Studium - HAW/5. Semester/WP NoSQL & BigData - Zukunft/Praktikum/2/plz.data", "r")
+
+puts "run import"
+
+f.each_line do |line|
+  puts line
+  client[:postals].insert_one(JSON.parse(line))
+  puts "----"
+end
+f.close
+
+puts "import completed"
