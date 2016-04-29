@@ -29,11 +29,13 @@ redis
 - LoC - import Script: 16
 - Aufwand: mittel
 - import time:
+- get plz für Hamburg:
 
 mongo
 - LoC - interaktive Konsole: 51
 - LoC - import Script: 14
 - Aufwand: leicht 
 - import time:
+- find plz für Hamburg:
 
 
