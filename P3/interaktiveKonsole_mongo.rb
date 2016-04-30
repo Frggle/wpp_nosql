@@ -7,6 +7,8 @@ require 'json'
 # kleines Shell Tool um interaktiv mit den PLZ der mongoDB zu agieren
 # Datum: 2016-04-29
 
+# keine Debug Ausgabe auf der Konsole
+Mongo::Logger.logger.level = ::Logger::FATAL
 $client = Mongo::Client.new([ '127.0.0.1:27017' ], :database => 'local')
 
 def help
@@ -29,6 +31,7 @@ def getCityAndState
 end
 
 def getPLZ
+  beginning_time = Time.now
   input = gets.chomp
   documents = $client[:postals].find('city' => input.upcase)
   if !documents.nil?
@@ -38,6 +41,8 @@ def getPLZ
   else
     puts 'invalid input'
   end
+  end_time = Time.now
+  puts "Time elapsed #{(end_time - beginning_time)*1000} milliseconds"
 end
 
 $aktiv = true

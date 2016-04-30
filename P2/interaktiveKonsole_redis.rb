@@ -26,6 +26,7 @@ def getCityAndState
 end
 
 def getPLZ
+  beginning_time = Time.now
   input = gets.chomp
   plz = $redis.smembers(input.upcase)
   if !plz.nil?
@@ -33,6 +34,8 @@ def getPLZ
   else
     puts 'invalid input'
   end
+  end_time = Time.now
+  puts "Time elapsed #{(end_time - beginning_time)*1000} milliseconds"
 end
 
 $aktiv = true

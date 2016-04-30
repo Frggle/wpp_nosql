@@ -3,18 +3,22 @@ require 'mongo'
 require 'json'
 
 include Mongo
-
+# keine Debug Ausgabe auf der Konsole
+Mongo::Logger.logger.level = ::Logger::FATAL
+# Datenbank vorher loeschen
+Mongo::Client.new([ '127.0.0.1:27017' ], :database => 'local').database.drop
+puts "drop database"
 client = Mongo::Client.new([ '127.0.0.1:27017' ], :database => 'local')
-
-f = File.open("/media/sf_shared/Studium - HAW/5. Semester/WP NoSQL & BigData - Zukunft/Praktikum/2/plz.data", "r")
 
 puts "run import"
 
+beginning_time = Time.now
+f = File.open("/media/sf_wpp_nosql/P2/plz.data", "r")
+
 f.each_line do |line|
-  puts line
   client[:postals].insert_one(JSON.parse(line))
-  puts "----"
 end
 f.close
-
+end_time = Time.now
 puts "import completed"
+puts "Time elapsed #{(end_time - beginning_time)*1000} milliseconds"
