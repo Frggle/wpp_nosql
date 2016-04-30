@@ -28,14 +28,14 @@ redis
 - LoC - interaktive Konsole: 45
 - LoC - import Script: 16
 - Aufwand: mittel
-- import time:
-- get plz für Hamburg:
+- import time: 5948 ms (5.948 sec)
+- get plz für Hamburg: 1745 ms (1.745 sec)
 
 mongo
 - LoC - interaktive Konsole: 51
 - LoC - import Script: 14
 - Aufwand: leicht 
-- import time:
-- find plz für Hamburg:
+- import time: 12013 ms (12.013 sec)
+- find plz für Hamburg: 1723 ms (1.723 sec)
 
 
