@@ -38,4 +38,8 @@ mongo
 - **import time**: 12013 ms (12.013 sec)
 - **find plz für Hamburg**: 1723 ms (1.723 sec)
 
+#### Aufgabe 8
+d)
+- Output: `{"ok"=>1, "nModified"=>1, "n"=>1}`
+- Beobachtung: update wurde nicht auf einem speziellen Objekt angewendet -> Dokument mit 'Augsburg' war "weg" -> im Objekt ist nur noch die ID und Tabellenplatz = 1
 
