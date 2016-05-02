@@ -14,7 +14,7 @@ puts "drop collection"
 puts "run import"
 
 beginning_time = Time.now
-f = File.open("/media/sf_wpp_nosql/P2/plz.data", "r")
+f = File.open("/media/sf_haw.bai5.nosql_wpp/P2/plz.data", "r")
 
 f.each_line do |line|
   client[:postals].insert_one(JSON.parse(line))

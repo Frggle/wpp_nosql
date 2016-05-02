@@ -14,7 +14,7 @@ puts "drop collection"
 puts "run import"
 
 beginning_time = Time.now
-f = File.open("/media/sf_wpp_nosql/P3/sinndeslebens_edit.txt", "r")
+f = File.open("/media/sf_haw.bai5.nosql_wpp/P3/sinndeslebens_edit.txt", "r")
 
 f.each_line do |line|
   #line.sub!("db.fussball.insert(", "") # remove "db.fussball.insert("
