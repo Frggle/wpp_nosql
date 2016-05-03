@@ -20,6 +20,9 @@ public class NoSQLHBase {
 	
 	public static void main(String[] args) throws IOException {
 		Configuration conf = HBaseConfiguration.create();
+		conf.set("hbase.zookeeper.quorum", "localhost:2181");
+		conf.set("hbase.master", "localhost");
+        conf.set("hbase.zookeeper.property.clientPort", "35402");	// TODO: ändern!?
 		HBaseAdmin admin = new HBaseAdmin(conf);
 		HTableDescriptor tableDescriptor = new HTableDescriptor(TableName.valueOf("postals"));
 		tableDescriptor.addFamily(new HColumnDescriptor("details"));
@@ -28,7 +31,7 @@ public class NoSQLHBase {
 
 		HTable table = new HTable(conf, "postals");
 		
-		String file = "/media/sf_wpp_nosql/P2/plz.data";
+		String file = "/media/sf_haw.bai5.nosql_wpp/P2/plz.data";
 		String thisLine = null;
 		Gson gson = new Gson();
 		BufferedReader br = new BufferedReader(new FileReader(file));
